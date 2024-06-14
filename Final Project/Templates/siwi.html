@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIWI</title>
+</head>
+<body>
+    <h1>SIWI</h1>
+    {% if siwis %}
+        <ul>
+            {% for siwi in siwis %}
+                <li>{{ siwi['siwi_info'] }}
+                    <form method="post" action="/delete_siwi/{{ siwi['id'] }}" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No SIWI records found.</p>
+    {% endif %}
+    <h2>Add New SIWI</h2>
+    <form method="post" action="/siwi">
+        <label for="siwi_info">SIWI:</label>
+        <input type="text" id="siwi_info" name="siwi_info" required><br>
+        <button type="submit">Add SIWI</button>
+    </form>
+    <a href="/logout">Logout</a>
+</body>
+</html>
